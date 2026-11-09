@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#0D0B1F}
+body{font-family:Inter,sans-serif;color:#fff;position:relative;-webkit-font-smoothing:antialiased}
+.a{position:absolute}
+.pop{font-family:Poppins,sans-serif}
+#bg{position:absolute;inset:0;overflow:hidden}
+.blob{position:absolute;border-radius:50%;filter:blur(140px)}
+/* hook */
+.hook{position:absolute;left:0;width:1080px;text-align:center;font-family:Poppins;font-weight:700;font-size:104px;line-height:1.08;letter-spacing:-2px}
+.hook .w{display:inline-block}
+.hl{background:linear-gradient(90deg,#9B82FF,#2EE6A6);-webkit-background-clip:text;color:transparent}
+/* captions */
+.cap{position:absolute;left:0;top:130px;width:1080px;text-align:center}
+.pill{display:inline-block;padding:10px 26px;border-radius:40px;background:rgba(123,92,255,.22);border:2px solid rgba(155,130,255,.55);color:#C9BCFF;font-weight:700;font-size:28px;letter-spacing:4px}
+.cap h2{font-family:Poppins;font-weight:700;font-size:66px;line-height:1.1;margin-top:24px;letter-spacing:-1px}
+.cap .sub{font-size:36px;color:#2EE6A6;font-weight:600;margin-top:14px}
+/* phone */
+#phone{left:220px;top:540px;width:640px;height:1330px;border-radius:78px;background:#05040B;padding:14px;
+  box-shadow:0 0 0 3px #2A2740,0 40px 120px rgba(123,92,255,.45)}
+#screen{position:relative;width:612px;height:1302px;border-radius:64px;overflow:hidden;background:#12101F}
+.scr{position:absolute;inset:0}
+#island{left:231px;top:18px;width:150px;height:42px;border-radius:24px;background:#000;z-index:50}
+#status{left:0;top:0;width:612px;height:80px;z-index:49;font-weight:600;font-size:24px}
+#status .t{position:absolute;left:58px;top:26px}
+#status .r{position:absolute;right:52px;top:28px;display:flex;gap:8px;align-items:center}
+.muted{color:rgba(255,255,255,.6)}
+/* upload */
+#drop{left:40px;top:330px;width:532px;height:290px;border-radius:32px;border:3px dashed rgba(255,255,255,.25);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;font-size:24px}
+#file{left:156px;width:300px;height:96px;border-radius:22px;background:#fff;color:#151321;display:flex;align-items:center;gap:16px;padding:0 20px;box-shadow:0 20px 50px rgba(0,0,0,.5)}
+.pdf{width:56px;height:64px;border-radius:10px;background:#FF4D6D;color:#fff;font-weight:800;font-size:17px;display:flex;align-items:center;justify-content:center}
+#prog{left:40px;top:660px;width:532px}
+.bar{height:16px;border-radius:10px;background:rgba(255,255,255,.12);overflow:hidden;margin-top:14px}
+.fill{height:100%;border-radius:10px;background:linear-gradient(90deg,#7B5CFF,#2EE6A6)}
+#prof{left:40px;top:770px;width:532px;height:470px;border-radius:34px;background:#1D1A33;padding:34px;border:2px solid rgba(255,255,255,.06)}
+.av{width:110px;height:110px;border-radius:50%;background:linear-gradient(135deg,#7B5CFF,#2EE6A6);display:flex;align-items:center;justify-content:center;font-family:Poppins;font-weight:700;font-size:40px}
+.chips{display:flex;flex-wrap:wrap;gap:12px}
+.chip{padding:10px 20px;border-radius:30px;background:rgba(255,255,255,.1);font-size:22px;font-weight:600}
+.chip.v{background:rgba(123,92,255,.3);color:#D5CBFF}
+/* feed card */
+.card{position:absolute;left:0;width:612px;height:1302px;overflow:hidden}
+.card .deco{position:absolute;width:700px;height:700px;border-radius:50%;right:-330px;top:-160px;opacity:.35}
+.co{position:absolute;left:40px;top:250px;display:flex;align-items:center;gap:20px}
+.logo{width:96px;height:96px;border-radius:26px;display:flex;align-items:center;justify-content:center;font-family:Poppins;font-weight:700;font-size:48px;color:#12101F}
+.title{position:absolute;left:40px;top:385px;width:450px;font-family:Poppins;font-weight:700;font-size:58px;line-height:1.08;letter-spacing:-1px}
+.cchips{position:absolute;left:40px;top:540px;display:flex;gap:12px}
+.ring{position:absolute;left:40px;top:640px;width:200px;height:200px}
+.ring svg{position:absolute;inset:0;transform:rotate(-90deg)}
+.ring .n{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:Poppins;font-weight:700;font-size:50px}
+.rinfo{position:absolute;left:264px;top:676px;width:205px}
+.req{position:absolute;left:40px;top:890px;width:450px;font-size:23px;line-height:1.45;color:rgba(255,255,255,.72)}
+.btn{position:absolute;left:40px;top:1110px;width:450px;height:100px;border-radius:50px;background:#fff;color:#12101F;display:flex;align-items:center;justify-content:center;gap:12px;font-weight:800;font-size:30px}
+.acts{position:absolute;right:22px;top:560px;width:80px;display:flex;flex-direction:column;align-items:center;gap:40px;font-size:19px;font-weight:600}
+.act{display:flex;flex-direction:column;align-items:center;gap:6px}
+.ico{width:76px;height:76px;border-radius:50%;background:rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center}
+#fhead{left:0;top:80px;width:612px;height:70px;z-index:5;display:flex;justify-content:center;gap:40px;font-size:28px;font-weight:700}
+#toast{left:86px;top:170px;width:440px;height:76px;border-radius:40px;background:rgba(255,255,255,.95);color:#12101F;z-index:6;display:flex;align-items:center;justify-content:center;gap:12px;font-weight:700;font-size:24px}
+#finger{width:96px;height:96px;border-radius:50%;background:rgba(255,255,255,.35);border:4px solid rgba(255,255,255,.85);z-index:60;margin:-48px 0 0 -48px}
+/* insights */
+.box{position:absolute;left:32px;width:548px;border-radius:32px;background:#1D1A33;padding:30px;border:2px solid rgba(255,255,255,.06)}
+.brow{margin-bottom:26px}
+.brow .top{display:flex;justify-content:space-between;align-items:center;font-size:24px;font-weight:600}
+.tag{font-size:17px;font-weight:800;padding:5px 12px;border-radius:14px;margin-left:10px}
+.rec{display:flex;gap:18px;align-items:center;padding:18px 0;border-top:2px solid rgba(255,255,255,.07)}
+.rec .ic{width:70px;height:70px;border-radius:20px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+/* sheet */
+#sheet{left:0;top:760px;width:612px;height:560px;border-radius:44px 44px 0 0;background:#1D1A33;z-index:8;padding:30px 40px;border-top:2px solid rgba(255,255,255,.08)}
+/* end */
+#end{position:absolute;inset:0}
+</style></head>
+<body>
+<div id="bg">
+  <div class="blob" id="b1" style="width:820px;height:820px;background:#5B3DF5;opacity:.55"></div>
+  <div class="blob" id="b2" style="width:620px;height:620px;background:#1FBF8A;opacity:.35"></div>
+  <div class="blob" id="b3" style="width:560px;height:560px;background:#E0457B;opacity:.28"></div>
+</div>
+
+<!-- HOOK -->
+<div class="hook" id="hook1" style="top:770px"><span class="w">Procurar</span> <span class="w">emprego</span><br><span class="w">cansa.</span></div>
+<div class="hook" id="hook2" style="top:700px;font-size:96px">E se fosse tão fácil<br>quanto <span class="hl">rolar<br>o feed</span>?</div>
+
+<!-- CAPTIONS -->
+<div class="cap" id="cap1"><span class="pill">PASSO 1</span><h2>Envie seu currículo.<br>A IA monta seu perfil.</h2></div>
+<div class="cap" id="cap2"><span class="pill">PASSO 2</span><h2>Role as vagas<br>feitas pra você</h2><div class="sub">com % de compatibilidade</div></div>
+<div class="cap" id="cap3"><span class="pill">INSIGHTS</span><h2>Saiba o que as empresas<br>mais procuram</h2></div>
+<div class="cap" id="cap4"><span class="pill">PASSO 3</span><h2>Candidate-se<br>com 1 clique</h2></div>
+
+<!-- PHONE -->
+<div class="a" id="phone"><div id="screen">
+  <div class="a" id="island"></div>
+  <div class="a" id="status"><span class="t">9:41</span><span class="r">
+    <svg width="30" height="20" viewBox="0 0 30 20"><rect x="0" y="12" width="5" height="8" rx="1.5" fill="#fff"/><rect x="8" y="8" width="5" height="12" rx="1.5" fill="#fff"/><rect x="16" y="4" width="5" height="16" rx="1.5" fill="#fff"/><rect x="24" y="0" width="5" height="20" rx="1.5" fill="#fff"/></svg>
+    <svg width="44" height="22" viewBox="0 0 44 22"><rect x="1" y="1" width="38" height="20" rx="6" fill="none" stroke="#fff" stroke-opacity=".5" stroke-width="2"/><rect x="4" y="4" width="28" height="14" rx="3.5" fill="#fff"/><rect x="41" y="7" width="3" height="8" rx="1.5" fill="#fff" fill-opacity=".5"/></svg>
+  </span></div>
+
+  <!-- upload screen -->
+  <div class="scr" id="sUp">
+    <div class="a" style="left:40px;top:100px;display:flex;align-items:center;gap:14px">
+      <div class="lg-s"></div><span class="pop" style="font-weight:700;font-size:34px">Hirly</span></div>
+    <div class="a pop" style="left:40px;top:180px;font-weight:700;font-size:46px">Vamos começar</div>
+    <div class="a muted" style="left:40px;top:250px;font-size:25px">Envie seu currículo e a IA cuida do resto</div>
+    <div class="a" id="drop">
+      <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4M6 10l6-6 6 6"/><path d="M4 20h16"/></svg>
+      <span class="muted" id="dropTxt">Arraste seu currículo aqui</span>
+    </div>
+    <div class="a" id="file"><div class="pdf">PDF</div><div><div style="font-weight:700;font-size:22px">curriculo_ana.pdf</div><div style="font-size:18px;color:#777">248 KB</div></div></div>
+    <div class="a" id="prog">
+      <div style="display:flex;justify-content:space-between;font-size:24px;font-weight:600"><span id="progTxt">IA montando seu perfil…</span><span id="progPct" style="color:#2EE6A6">0%</span></div>
+      <div class="bar"><div class="fill" id="progFill" style="width:0%"></div></div>
+    </div>
+    <div class="a" id="prof">
+      <div style="display:flex;gap:24px;align-items:center">
+        <div class="av">AS</div>
+        <div><div class="pop" style="font-weight:700;font-size:36px">Ana Souza</div>
+        <div class="muted" style="font-size:23px;margin-top:4px">Designer de Produto · 4 anos</div></div>
+      </div>
+      <div class="muted" style="font-size:20px;font-weight:700;letter-spacing:2px;margin:34px 0 16px">HABILIDADES DETECTADAS</div>
+      <div class="chips" id="pchips">
+        <span class="chip v">Figma</span><span class="chip v">UX Research</span><span class="chip v">Design System</span><span class="chip">Prototipação</span><span class="chip">Inglês avançado</span>
+      </div>
+      <div id="pready" style="margin-top:30px;display:flex;align-items:center;gap:10px;color:#2EE6A6;font-weight:700;font-size:26px">
+        <svg width="34" height="34" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#2EE6A6"/><path d="M7 12.5l3.2 3.2L17 9" stroke="#12101F" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Perfil pronto</div>
+    </div>
+  </div>
+
+  <!-- feed screen -->
+  <div class="scr" id="sFeed">
+    <div id="strip" class="a" style="left:0;top:0;width:612px"></div>
+    <div class="a" style="left:0;top:0;width:612px;height:230px;z-index:4;background:linear-gradient(180deg,rgba(10,8,22,.85) 0%,rgba(10,8,22,.55) 55%,rgba(10,8,22,0) 100%)"></div>
+    <div class="a" id="fhead"><span>Para você</span><span class="muted">Curtidas</span>
+      <svg class="a" style="right:40px;top:4px" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12M20 18h0"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></svg>
+    </div>
+    <div style="position:absolute;left:220px;top:146px;width:56px;height:5px;border-radius:3px;background:#fff;z-index:5"></div>
+    <div class="a" id="toast"><svg width="30" height="30" viewBox="0 0 24 24"><path fill="#FF4D8D" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>Vaga salva no seu histórico</div>
+  </div>
+
+  <!-- insights screen -->
+  <div class="scr" id="sIns">
+    <div class="a pop" style="left:40px;top:96px;font-weight:700;font-size:42px">Insights</div>
+    <div class="a muted" style="left:40px;top:156px;font-size:24px">Para Designer de Produto</div>
+    <div class="a chips" style="left:40px;top:212px;width:540px" id="fchips">
+      <span class="chip">Remoto</span><span class="chip">Pleno</span><span class="chip">R$ 6 mil+</span><span class="chip">CLT</span>
+    </div>
+    <div class="box" style="top:310px">
+      <div style="font-size:26px;font-weight:800;margin-bottom:28px">Requisitos mais pedidos</div>
+      <div id="bars"></div>
+    </div>
+    <div class="box" style="top:830px;padding-bottom:14px" id="recs">
+      <div style="font-size:26px;font-weight:800;margin-bottom:14px">Experiências recomendadas</div>
+      <div class="rec" id="rec0"><div class="ic" style="background:rgba(123,92,255,.3)"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#C9BCFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8l10-5 10 5-10 5z"/><path d="M6 10.5V16c3 2.5 9 2.5 12 0v-5.5"/></svg></div>
+        <div><div style="font-size:24px;font-weight:700">Curso: Motion para UI</div><div style="font-size:21px;color:#2EE6A6;font-weight:700;margin-top:4px">+8% de compatibilidade</div></div></div>
+      <div class="rec" id="rec1"><div class="ic" style="background:rgba(46,230,166,.2)"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#2EE6A6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></div>
+        <div><div style="font-size:24px;font-weight:700">Projeto: Design System do zero</div><div style="font-size:21px;color:#2EE6A6;font-weight:700;margin-top:4px">+5% de compatibilidade</div></div></div>
+    </div>
+  </div>
+
+  <!-- apply screen -->
+  <div class="scr" id="sApp">
+    <div id="appCard" class="a" style="left:0;top:0;width:612px;height:1302px"></div>
+    <div class="a" id="dim" style="inset:0;background:#000;z-index:7"></div>
+    <div class="a" id="sheet">
+      <div style="width:70px;height:7px;border-radius:4px;background:rgba(255,255,255,.25);margin:0 auto 34px"></div>
+      <div style="display:flex;align-items:center;gap:16px">
+        <svg width="56" height="56" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#2EE6A6"/><path d="M7 12.5l3.2 3.2L17 9" stroke="#12101F" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div class="pop" style="font-weight:700;font-size:40px">Perfil enviado!</div></div>
+      <div style="margin-top:30px;display:flex;align-items:center;gap:18px;background:rgba(255,255,255,.06);border-radius:24px;padding:18px">
+        <div class="av" style="width:72px;height:72px;font-size:26px">AS</div>
+        <div><div style="font-weight:700;font-size:25px">Ana Souza → Loja Viva</div><div style="color:#2EE6A6;font-weight:700;font-size:21px;margin-top:4px">95% compatível</div></div>
+      </div>
+      <div class="muted" style="font-size:24px;line-height:1.45;margin-top:26px">Seu perfil foi preenchido automaticamente na vaga. Agora é só aguardar a resposta da empresa.</div>
+      <div style="margin-top:26px;display:inline-flex;align-items:center;gap:10px;padding:10px 22px;border-radius:30px;background:rgba(255,190,60,.18);color:#FFC34D;font-weight:800;font-size:22px">
+        <span style="width:12px;height:12px;border-radius:50%;background:#FFC34D;display:inline-block"></span>Em análise</div>
+    </div>
+  </div>
+
+  <div class="a" id="finger"></div>
+</div></div>
+
+<!-- END CARD -->
+<div id="end">
+  <div class="a" id="bigLogo" style="left:440px;top:600px;width:200px;height:200px"></div>
+  <div class="a pop" id="word" style="left:0;top:830px;width:1080px;text-align:center;font-weight:700;font-size:170px;letter-spacing:-4px">Hirly</div>
+  <div class="a pop" id="tag" style="left:0;top:1070px;width:1080px;text-align:center;font-weight:600;font-size:54px;line-height:1.2">Sua próxima vaga está<br><span class="hl">a um scroll.</span></div>
+  <div class="a" id="cta" style="left:290px;top:1300px;width:500px;height:120px;border-radius:60px;background:#2EE6A6;color:#0D0B1F;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:46px">Baixe agora</div>
+</div>
+
+<script>
+const LOGO = (s)=>`<svg width="${s}" height="${s}" viewBox="0 0 100 100"><defs><linearGradient id="lg${s}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7B5CFF"/><stop offset="1" stop-color="#2EE6A6"/></linearGradient></defs><rect width="100" height="100" rx="28" fill="url(#lg${s})"/><path d="M30 50 L50 32 L70 50" stroke="#fff" stroke-width="10" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M30 72 L50 54 L70 72" stroke="#fff" stroke-opacity=".55" stroke-width="10" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+document.querySelector('.lg-s').innerHTML = LOGO(54);
+document.getElementById('bigLogo').innerHTML = LOGO(200);
+
+const HEART='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z';
+const C = 2*Math.PI*84;
+const jobs=[
+ {co:'Nuvem Tech',l:'N',lc:'#9B82FF',sec:'Tecnologia · São Paulo',t:'Designer UX Pleno',ch:['Remoto','CLT','R$ 7.500'],m:92,r:'9 de 10 requisitos',req:'Figma, Design System, pesquisa com usuários',bg:'linear-gradient(165deg,#2C1C78 0%,#14102E 60%,#0F0C22 100%)',dc:'#7B5CFF'},
+ {co:'Banco Aurora',l:'A',lc:'#FFC34D',sec:'Finanças · Rio de Janeiro',t:'Product Designer',ch:['Híbrido','PJ','R$ 9.000'],m:87,r:'8 de 10 requisitos',req:'Figma, métricas de produto, prototipação',bg:'linear-gradient(165deg,#5A3A0E 0%,#1E1424 60%,#120E1E 100%)',dc:'#FFB020'},
+ {co:'Loja Viva',l:'V',lc:'#2EE6A6',sec:'Varejo · Belo Horizonte',t:'UI Designer',ch:['Remoto','CLT','R$ 8.200'],m:95,r:'10 de 10 requisitos',req:'Figma, Design System, UX Research',bg:'linear-gradient(165deg,#0D4A3C 0%,#10202A 60%,#0F0C22 100%)',dc:'#1FBF8A'},
+];
+function card(j,id,top){return `<div class="card" style="top:${top}px;background:${j.bg}">
+ <div class="deco" style="background:radial-gradient(circle,${j.dc},transparent 65%)"></div>
+ <div class="co"><div class="logo" style="background:${j.lc}">${j.l}</div><div><div style="font-weight:800;font-size:30px">${j.co}</div><div class="muted" style="font-size:22px;margin-top:4px">${j.sec}</div></div></div>
+ <div class="title">${j.t}</div>
+ <div class="cchips">${j.ch.map(c=>`<span class="chip">${c}</span>`).join('')}</div>
+ <div class="ring"><svg width="200" height="200"><circle cx="100" cy="100" r="84" stroke="rgba(255,255,255,.12)" stroke-width="18" fill="none"/><circle id="${id}r" cx="100" cy="100" r="84" stroke="#2EE6A6" stroke-width="18" fill="none" stroke-linecap="round" stroke-dasharray="${C}" stroke-dashoffset="${C}"/></svg><div class="n" id="${id}n">0%</div></div>
+ <div class="rinfo"><div style="font-weight:800;font-size:26px;line-height:1.2">compatível com seu perfil</div><div style="color:#2EE6A6;font-weight:700;font-size:22px;margin-top:10px">${j.r}</div></div>
+ <div class="req"><b style="color:#fff">Requisitos:</b> ${j.req}</div>
+ <div class="btn" id="${id}b"><svg width="30" height="30" viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z" fill="#7B5CFF"/></svg><span id="${id}bt">Candidatar-se</span></div>
+ <div class="acts">
+   <div class="act"><div class="ico" id="${id}h"><svg width="40" height="40" viewBox="0 0 24 24"><path id="${id}hp" d="${HEART}" fill="none" stroke="#fff" stroke-width="2"/></svg></div>Curtir</div>
+   <div class="act"><div class="ico"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M8 6h12M8 12h12M8 18h12"/><circle cx="4" cy="6" r="1" fill="#fff"/><circle cx="4" cy="12" r="1" fill="#fff"/><circle cx="4" cy="18" r="1" fill="#fff"/></svg></div>Detalhes</div>
+   <div class="act"><div class="ico"><svg width="36" height="36" viewBox="0 0 24 24"><path d="M3 20.5l18-8.5L3 3.5v6.5l12 2-12 2z" fill="#fff"/></svg></div>Enviar</div>
+ </div></div>`}
+document.getElementById('strip').innerHTML = jobs.map((j,i)=>card(j,'c'+i,i*1302)).join('');
+document.getElementById('appCard').innerHTML = card(jobs[2],'ap',0);
+
+const barsData=[['Figma',91,1],['Design System',78,1],['Pesquisa com usuários',66,1],['Motion design',54,0]];
+document.getElementById('bars').innerHTML = barsData.map((b,i)=>`<div class="brow"><div class="top"><span>${b[0]}${b[2]?'<span class="tag" style="background:rgba(46,230,166,.18);color:#2EE6A6">VOCÊ TEM</span>':'<span class="tag" style="background:rgba(255,77,141,.18);color:#FF7AA8">APRENDA</span>'}</span><span id="bv${i}" style="font-weight:800">0%</span></div><div class="bar" style="height:18px"><div class="fill" id="bf${i}" style="width:0%;${b[2]?'':'background:linear-gradient(90deg,#FF4D8D,#FF9A6B)'}"></div></div></div>`).join('');
+
+// ---------- timeline ----------
+const $=id=>document.getElementById(id);
+const P=(t,a,b)=>Math.min(1,Math.max(0,(t-a)/(b-a)));
+const eo=x=>1-Math.pow(1-x,3);
+const eio=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;
+const eb=x=>{const c1=1.6,c3=c1+1;return 1+c3*Math.pow(x-1,3)+c1*Math.pow(x-1,2)};
+const vis=(t,a,b,c,d)=>eo(P(t,a,b))*(c==null?1:1-eio(P(t,c,d)));
+function S(el,o,x=0,y=0,s=1){el=typeof el==='string'?$(el):el;el.style.opacity=o;el.style.transform=`translate(${x}px,${y}px) scale(${s})`;el.style.visibility=o<=0.001?'hidden':'visible'}
+const mix=(a,b,p)=>a+(b-a)*p;
+
+function ring(id,val,t,t0){const p=eo(P(t,t0,t0+0.9));$(id+'r').setAttribute('stroke-dashoffset',C*(1-val/100*p));$(id+'n').textContent=Math.round(val*p)+'%'}
+
+function finger(t){
+  const f=$('finger');let o=0,x=0,y=0,s=1;
+  // like tap on card 1 heart (center ~ 551,598)
+  if(t>7.9&&t<8.8){o=vis(t,7.95,8.15,8.5,8.75);x=551;y=598;s=1-0.22*Math.sin(Math.PI*P(t,8.18,8.4))}
+  // swipes
+  const sw=(a)=>{o=vis(t,a,a+.12,a+.55,a+.7);x=306;y=mix(1050,520,eio(P(t,a+.1,a+.6)));};
+  if(t>9.15&&t<9.95)sw(9.2);
+  if(t>10.95&&t<11.75)sw(11.0);
+  // apply tap (button center 265,1160)
+  if(t>16.6&&t<17.5){o=vis(t,16.65,16.85,17.2,17.45);x=265;y=1160;s=1-0.22*Math.sin(Math.PI*P(t,16.9,17.12))}
+  f.style.left=x+'px';f.style.top=y+'px';S(f,o*0.95,0,0,s);
+}
+
+function setTime(t){
+  // background
+  $('b1').style.left=(-260+Math.sin(t*.35)*120)+'px';$('b1').style.top=(-200+Math.cos(t*.3)*100)+'px';
+  $('b2').style.left=(560+Math.cos(t*.4)*120)+'px';$('b2').style.top=(1240+Math.sin(t*.33)*120)+'px';
+  $('b3').style.left=(620+Math.sin(t*.28+1)*140)+'px';$('b3').style.top=(160+Math.cos(t*.37)*120)+'px';
+
+  // hook
+  const ws=document.querySelectorAll('#hook1 .w');
+  ws.forEach((w,i)=>{const a=0.15+i*0.28;const p=eo(P(t,a,a+.45));w.style.opacity=p;w.style.transform=`translateY(${(1-p)*60}px)`});
+  S('hook1',1-eio(P(t,1.95,2.3)),0,-eio(P(t,1.95,2.3))*60);
+  const h2=vis(t,2.3,2.8,3.55,3.9);S('hook2',h2,0,(1-eo(P(t,2.3,2.8)))*60-eio(P(t,3.55,3.9))*80);
+
+  // captions
+  const caps=[['cap1',4.05,7.2],['cap2',7.2,13.0],['cap3',13.0,16.2],['cap4',16.2,19.35]];
+  caps.forEach(([id,a,b])=>{const p=vis(t,a+.05,a+.45,b-.35,b-.05);S(id,p,0,(1-eo(P(t,a+.05,a+.45)))*40)});
+
+  // phone
+  const pin=eo(P(t,3.75,4.5)),pout=eio(P(t,19.15,19.65));
+  S('phone',Math.min(P(t,3.75,4.0),1-pout),0,(1-pin)*900+pout*120+Math.sin(t*1.6)*6,1-pout*.1);
+
+  // screens
+  S('sUp',1-P(t,7.0,7.35));
+  S('sFeed',vis(t,7.0,7.35,12.85,13.2));
+  S('sIns',vis(t,12.85,13.2,16.0,16.35));
+  S('sApp',eo(P(t,16.0,16.35)));
+
+  // upload
+  const fp=P(t,4.35,4.95);
+  $('file').style.top=mix(-170,425,eb(fp))+'px';$('file').style.opacity=P(t,4.35,4.42);
+  const landed=P(t,4.85,5.05);
+  $('drop').style.borderColor=`rgba(${Math.round(mix(255,123,landed))},${Math.round(mix(255,92,landed))},255,${mix(.25,.9,landed)})`;
+  $('drop').style.background=`rgba(123,92,255,${.12*landed})`;
+  $('dropTxt').style.opacity=1-landed;
+  S('prog',vis(t,4.95,5.15));
+  const pp=eio(P(t,5.05,6.0));$('progFill').style.width=(pp*100)+'%';$('progPct').textContent=Math.round(pp*100)+'%';
+  $('progTxt').textContent=pp>=1?'Perfil criado pela IA':'IA montando seu perfil…';
+  S('prof',vis(t,6.0,6.35),0,(1-eo(P(t,6.0,6.35)))*50);
+  document.querySelectorAll('#pchips .chip').forEach((c,i)=>{const a=6.2+i*.1;const p=P(t,a,a+.3);c.style.opacity=eo(p);c.style.transform=`scale(${mix(.6,1,eb(p))})`});
+  S('pready',vis(t,6.75,6.95));
+
+  // feed
+  const idx=eio(P(t,9.35,9.85))+eio(P(t,11.15,11.65));
+  $('strip').style.transform=`translateY(${-idx*1302}px)`;
+  ring('c0',92,t,7.4);ring('c1',87,t,9.7);ring('c2',95,t,11.5);
+  const hp=P(t,8.28,8.36);
+  $('c0hp').setAttribute('fill',hp>0?'#FF4D8D':'none');$('c0hp').setAttribute('stroke',hp>0?'#FF4D8D':'#fff');
+  $('c0h').style.transform=`scale(${1+0.35*Math.sin(Math.PI*P(t,8.28,8.6))})`;
+  S('toast',vis(t,8.4,8.6,9.05,9.25),0,(1-eo(P(t,8.4,8.6)))*-40);
+
+  // insights
+  document.querySelectorAll('#fchips .chip').forEach((c,i)=>{const on=i<3&&t>=13.35+i*.18;c.style.background=on?'#7B5CFF':'rgba(255,255,255,.1)';c.style.transform=`scale(${1+0.08*Math.sin(Math.PI*P(t,13.35+i*.18,13.55+i*.18))*(i<3)})`});
+  barsData.forEach((b,i)=>{const p=eo(P(t,13.55+i*.15,14.45+i*.15));$('bf'+i).style.width=(b[1]*p)+'%';$('bv'+i).textContent=Math.round(b[1]*p)+'%'});
+  S('recs',vis(t,14.6,14.95),0,(1-eo(P(t,14.6,14.95)))*40);
+  ['rec0','rec1'].forEach((id,i)=>S(id,vis(t,14.85+i*.25,15.2+i*.25),(1-eo(P(t,14.85+i*.25,15.2+i*.25)))*40));
+
+  // apply
+  ring('ap',95,t,-10);
+  const pressed=P(t,17.05,17.25);
+  $('apb').style.background=pressed>0?'#2EE6A6':'#fff';
+  $('apb').style.transform=`scale(${1-0.06*Math.sin(Math.PI*P(t,16.92,17.15))})`;
+  $('apbt').textContent=pressed>0?'Candidatura enviada':'Candidatar-se';
+  S('dim',0.55*eo(P(t,17.55,17.95)));
+  $('sheet').style.transform=`translateY(${(1-eo(P(t,17.5,18.0)))*620}px)`;
+
+  finger(t);
+
+  // end
+  const lp=P(t,19.7,20.25);S('bigLogo',P(t,19.7,19.85),0,0,eb(lp)*1);
+  S('word',vis(t,19.95,20.4),0,(1-eo(P(t,19.95,20.4)))*50);
+  S('tag',vis(t,20.4,20.9),0,(1-eo(P(t,20.4,20.9)))*40);
+  const cp=P(t,20.95,21.35);S('cta',eo(cp),0,(1-eo(cp))*40,(t>21.5?1+0.035*Math.sin((t-21.5)*Math.PI*2*0.9):1));
+}
+window.setTime=setTime;setTime(0);
+</script>
+</body></html>
