@@ -1,0 +1,21 @@
+# Planilhas e dados financeiros: ficam só no seu computador, nunca no GitHub
+financeiro/
+
+# Arquivos do sistema
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Editor
+.vscode/
+
+# Python
+__pycache__/
+*.pyc
+
+# Variáveis de ambiente e segredos
+.env
+.env.*
+
+# Logs
+*.log
